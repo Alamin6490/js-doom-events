@@ -11,21 +11,29 @@
     <button onclick="console.log(7)">fuck me</button>
     <button onclick="console.log(9)">Kiss me</button>
     <br>
-    // option 1 : directly set on the html
+    //<!--option 1 : directly set on the html--->
+    
 
     <button onclick="document.body.style.background='yellow'">Make yellow</button>
-    // option :2 add onclick function
+    //<!--option 2 :  --->
 
     <button onclick="makeRed()">Make Red</button>
-    // option :3
+   //<!--option 3 :  --->
     <button id="make-blue">Make Blue</button>
-    // option :3 another 
-
+    //<!--option 3 :ANOTHER  --->
     <button id="make-purple" >Make purple</button>
-   
-<script  src="JS/EVENTS.JS"></script>
+    //<!--option 4 : MAKE PINK --->
+    <button id="make-pink" >Make pink</button>
+    <button id="make-green" >Make Green</button>
+    <button id="make-goldenrod" >Make Goldenrod</button>
+
+
+
+<script src="JS/EVENTS.JS"></script>
       <script>
-         
+          document.getElementById('make-goldenrod').addEventListener('click',function(){
+            document.body.style.backgroundColor = 'goldenrod';
+          })
          
       </script>
 </body>
