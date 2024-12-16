@@ -4,6 +4,7 @@ console.log('This is saparate js file');
 
 
 // option :2 add onclick function on the html element
+// IMPORTANT : WE WILL USE THIS
 //<button onclick="makeRed()">Make Red</button>
 
 function makeRed(){
@@ -38,3 +39,9 @@ const makeGreenButton = document.getElementById('make-green');
           
             document.body.style.backgroundColor = 'green';
          })
+
+// OPTION : 4 FINAL 
+// IMPORTNT : WE WILL USE THIS 
+document.getElementById('make-goldenrod').addEventListener('click',function(){
+    document.body.style.backgroundColor = 'goldenrod';
+  })
