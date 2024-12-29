@@ -6,8 +6,104 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>My secret info</h1>
-    <input type="text">
-    <button>Delete</button>
+    <h1 id="secrett-info">My secret info</h1>
+    <input id="delete-confirm" type="text" placeholder="please type delete">
+    <button id="btn-delete" disabled>Delete</button>
+    <script>
+        document.getElementById('delete-confirm').addEventListener('click', function(event){ const text = event.target.value;
+            const deleteButton = document.getElementById('btn-delete');
+            if(text === 'delete'){
+                deleteButton.removeAttribute('disabled');
+            }
+            else{
+                deleteButton.setAttribute('disabled', true);
+            }
+        })
+        document.getElementById('btn-delete').addEventListener('click', function(){
+        const secret = document.getElementById('secrett-info');
+        secret.style.display = 'none';})
+    </script>
 </body>
 </html>
+
+  // Explain the code
+  এই কোডটি একটি ওয়েব পেজের HTML এবং JavaScript অংশ। এটি একটি ফিচার দেখায় যেখানে ব্যবহারকারী একটি নির্দিষ্ট শব্দ টাইপ করার পরে একটি "Delete" বোতাম সক্রিয় হয়, এবং সেই বোতাম ক্লিক করলে একটি গোপন তথ্য সেকশন লুকানো হয়। নিচে প্রতিটি অংশের ব্যাখ্যা দেওয়া হলো: 
+
+---
+
+### **HTML অংশ**
+```html
+<h1 id="secrett-info">My secret info</h1>
+<input id="delete-confirm" type="text" placeholder="please type delete">
+<button id="btn-delete" disabled>Delete</button>
+```
+
+1. **`<h1>` ট্যাগ**: 
+   - `id="secrett-info"` ব্যবহার করে সেকশনটি চিহ্নিত করা হয়েছে। এটি "My secret info" নামে একটি হেডিং দেখায়, যা গোপন তথ্য হিসেবে ধরা হয়েছে।
+
+2. **`<input>` ট্যাগ**: 
+   - একটি ইনপুট ফিল্ড, যেখানে ব্যবহারকারী কিছু লিখতে পারে।
+   - `id="delete-confirm"` দিয়ে এটিকে চিহ্নিত করা হয়েছে। 
+   - `placeholder="please type delete"` ব্যবহার করে ইনপুট বক্সের ভেতরে নির্দেশনা দেওয়া হয়েছে।
+
+3. **`<button>` ট্যাগ**:
+   - এটি "Delete" নামে একটি বোতাম।
+   - `id="btn-delete"` দিয়ে এটিকে চিহ্নিত করা হয়েছে।
+   - `disabled` অ্যাট্রিবিউট দেওয়া হয়েছে, অর্থাৎ এটি শুরুতে নিষ্ক্রিয় (disabled) অবস্থায় থাকবে।
+
+---
+
+### **JavaScript অংশ**
+
+```javascript
+document.getElementById('delete-confirm').addEventListener('click', function(event){
+    const text = event.target.value;
+    const deleteButton = document.getElementById('btn-delete');
+    if(text === 'delete'){
+        deleteButton.removeAttribute('disabled');
+    }
+    else{
+        deleteButton.setAttribute('disabled', true);
+    }
+})
+```
+
+1. **ফাংশনের কাজ**:
+   - যখন ইনপুট বক্সে ক্লিক করা হবে বা কিছু লেখা হবে, এই ইভেন্টটি ট্রিগার হবে।
+   - `event.target.value` দিয়ে ইনপুট বক্সের লেখা পাওয়া যায়।
+   - যদি ইনপুটের লেখা `delete` হয়, তাহলে `deleteButton.removeAttribute('disabled')` দিয়ে "Delete" বোতামটি সক্রিয় (enabled) করা হয়।
+   - যদি লেখা `delete` না হয়, তাহলে `deleteButton.setAttribute('disabled', true)` দিয়ে বোতামটি নিষ্ক্রিয় (disabled) করা হয়।
+
+---
+
+```javascript
+document.getElementById('btn-delete').addEventListener('click', function(){
+    const secret = document.getElementById('secrett-info');
+    secret.style.display = 'none';
+})
+```
+
+1. **ফাংশনের কাজ**:
+   - "Delete" বোতামে ক্লিক করার পরে এটি কার্যকর হয়।
+   - এটি `id="secrett-info"` দিয়ে চিহ্নিত `<h1>` ট্যাগের এলিমেন্টটি খুঁজে বের করে।
+   - `secret.style.display = 'none';` ব্যবহার করে সেকশনটিকে লুকিয়ে ফেলে।
+
+---
+
+### **সমগ্র কার্যপ্রক্রিয়া**
+1. প্রথমে "Delete" বোতাম নিষ্ক্রিয় থাকে।
+2. ব্যবহারকারী ইনপুট বক্সে `delete` টাইপ করলে, "Delete" বোতাম সক্রিয় হয়।
+3. "Delete" বোতামে ক্লিক করলে গোপন তথ্য (হেডিং `My secret info`) লুকিয়ে যায়। 
+
+---
+
+### **সমস্যা:**
+কোডে একটি ভুল রয়েছে: 
+- ইভেন্ট লিস্টেনার `click` এর পরিবর্তে `input` হওয়া উচিত। কারণ, ব্যবহারকারীর ইনপুট চেক করার জন্য `input` ইভেন্ট সঠিক। 
+```javascript
+document.getElementById('delete-confirm').addEventListener('input', function(event){
+    // বাকিটা ঠিক আছে
+})
+```
+
+এটি করলে কোড আরও ভালো কাজ করবে।
